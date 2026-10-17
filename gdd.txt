@@ -1,0 +1,154 @@
+================================================================================
+GAME DESIGN DOCUMENT: COSMIC KINETICS (Working Title)
+================================================================================
+GENRE: Physics-Puzzle / Idle Tycoon
+PLATFORM: Mobile (iOS/Android) & PC
+ENGINE: Unity 2D (Standard RigidBody2D)
+VERSION: 1.0.0
+================================================================================
+
+1. CORE PREMISE & ELEVATOR PITCH
+--------------------------------------------------------------------------------
+Cosmic Kinetics is a sensory, physics-based idle game where players manipulate 
+real-time 2D physics inside geometric arenas to generate kinetic energy (cash). 
+The game scales from manually dropping a single ball into a spinning circle to 
+managing a multiverse of simulated physics systems. 
+
+The core strategy relies on finding the mathematical "Sweet Spot"—tuning sliders 
+for gravity, bounciness, friction, and rotation to maximize collisions without 
+clogging the system. It combines the hypnotic visual satisfaction of a screensaver 
+with the deep, strategic progression of a tycoon game.
+
+
+2. THE GAMEPLAY LOOP (PLAYER JOURNEY)
+--------------------------------------------------------------------------------
+- Phase 1: The Grind (0-5 mins)
+  Player taps the screen to spawn a heavy ball. It hits a wall, earns $1, and 
+  despawns. Player repeats this to buy their first "Auto-Spawner".
+
+- Phase 2: The Puzzle (5-30 mins)
+  Balls drop automatically. Player uses cash to unlock Physics Sliders 
+  (Bounciness, Gravity, Rotation Speed). They actively tweak the physics to keep 
+  the balls bouncing as long and fast as possible to maximize Bounces Per Second (BPS).
+
+- Phase 3: The Arsenal (1-5 Hours)
+  Player unlocks new physics toys: Bumpers, Portals, and unique ball classes 
+  (Ghost Balls, Heavy Bombs, Sticky Slime).
+
+- Phase 4: Scaling Up (Days)
+  Player zooms out to the Cosmic Scale, buying entirely new shapes and systems 
+  to run in the background.
+
+- Phase 5: Prestige (Weeks)
+  The player collapses their universe for Meta-Currency to permanently alter the 
+  game's fundamental physics laws.
+
+
+3. THE COSMIC SCALE (PROGRESSION TIERS)
+--------------------------------------------------------------------------------
+To prevent CPU lag, real-time physics ONLY run at the Micro View. Zooming out 
+switches the game to lightweight mathematical simulation based on average BPS.
+
+- TIER 1: The Micro View (The Laboratory)
+  Visual: A single rotating geometric shape. 
+  Mechanics: Real-time 2D physics. Up to 1,000 bouncing balls.
+  Goal: Tune sliders to find the max BPS for this specific shape.
+
+- TIER 2: The Mid View (The Factory)
+  Visual: 3 to 5 Shapes connected by glowing energy lines.
+  Mechanics: Physics suspended. Game calculates income using background math. 
+  Goal: Create synergies (e.g., A Triangle shape feeds a multiplier into a Square).
+
+- TIER 3: The Macro View (The Galaxy)
+  Visual: A scrollable star map. Systems are glowing nodes.
+  Mechanics: Tycoon management. Numbers scale into Trillions/Quadrillions.
+  Goal: Buy new Systems with unique physical constraints (e.g., "The Aqua System" 
+  has high drag and low gravity).
+
+
+4. NESTED PRESTIGE SYSTEM
+--------------------------------------------------------------------------------
+To prevent the game from feeling slow, players can "reset" at different scales:
+
+- Micro-Prestige (Shape Overclock): Every 15-30 minutes.
+  Action: Reset balls and sliders in ONE shape.
+  Reward: Shape gets a neon visual upgrade and a permanent base cash multiplier.
+
+- Meso-Prestige (System Supernova): Every few hours.
+  Action: Reset all shapes in a specific System.
+  Reward: Unlocks internal Arena Builders (bumpers, portals, gravity wells).
+
+- Macro-Prestige (The Big Crunch): Every few weeks.
+  Action: Destroy the entire Galaxy. Cash resets to $0.
+  Reward: Grants "Cosmic Dust." Spent in a permanent Tech Tree for rule-breaking 
+  modifiers (e.g., "Shapes spin 2x faster forever").
+
+
+5. SCENES & UI ARCHITECTURE
+--------------------------------------------------------------------------------
+The game uses a Single-Scene Architecture for gameplay to prevent load times from 
+interrupting the physics engine or background music.
+
+[SCENE 1: MAIN MENU]
+- Title screen, hypnotic background shapes.
+- Play Button, Sandbox Button, Cloud Login, Leaderboards, General Settings (Audio).
+
+[SCENE 2: CAREER MODE] (Where 99% of gameplay happens)
+- State A: The Micro UI (Zoomed In)
+  * Top: Bank (Cash) and Current BPS.
+  * Center: Active shape and bouncing balls.
+  * Bottom Tab 1: Shop (Auto-spawners, Max Ball Limits).
+  * Bottom Tab 2: Physics (Sliders for Gravity, Rotation, Mass, etc.).
+  * Bottom Tab 3: Armory (Drag-and-drop bumpers and ball types).
+
+- State B: The Mid/Macro UI (Zoomed Out)
+  * Overlay Canvas with drag-to-pan and pinch-to-zoom controls.
+  * System Upgrades and Galaxy Node purchasing buttons.
+
+[UI PANELS] (Pop-ups over the Career Scene)
+- Welcome Back: Offline earnings calculator. Includes "Watch Ad for 2X" button.
+- Tech Tree: Sprawling skill tree for Cosmic Dust meta-upgrades.
+- The Big Crunch Warning: Dramatic red UI, requires "Hold 3 Secs to Confirm".
+
+
+6. GAME MODES
+--------------------------------------------------------------------------------
+- Career Mode: The main Tycoon progression loop.
+- Sandbox Mode (The God-Mode Toy): 
+  * Accessed from Main Menu. 
+  * Money doesn't exist. All sliders, shapes, and ball types are unlocked.
+  * Used by players for stress relief and to test "Sweet Spot" slider strategies 
+    before building them in Career Mode. Used by Devs to test bug-free physics.
+
+
+7. SOCIAL & COMPETITIVE (LEADERBOARDS)
+--------------------------------------------------------------------------------
+No real-time networked physics (avoids desync/lag). Competition is asynchronous.
+
+- Global Ladders: Ranks players by Total Wealth, Highest single-shape BPS, and 
+  Fastest time to trigger a "Big Crunch".
+- The Daily Anomaly: A daily challenge mode. Every player in the world is given 
+  the exact same weird shape with corrupted physics (e.g., Star shape, zero gravity, 
+  high friction) and 3 minutes on the clock. Highest score goes to the Daily Board.
+
+
+8. AUDIO, VISUALS, & SENSORY "JUICE"
+--------------------------------------------------------------------------------
+- Generative Audio: Every wall-hit triggers a musical chime (pentatonic scale). 
+  As BPS increases, the game naturally generates ambient, rhythmic electronic music.
+- Visuals: Dark void background. Balls leave glowing neon trails. 
+- Feedback: Subtle screen shakes on heavy ball impacts. Haptic phone vibrations 
+  for UI clicks and Overclocks.
+
+
+9. MONETIZATION & RETENTION (NO BETTING)
+--------------------------------------------------------------------------------
+Strictly adheres to Tycoon/Idle best practices. No gambling/betting mechanics.
+- Rewarded Ads: "Watch 30s ad to double your Offline Earnings." (Highest revenue).
+- Time Skips: Spend premium currency (Dark Matter) to instantly gain 4 hours of cash.
+- Cosmetics: Purchase synthwave skins, custom hit-sounds, or rainbow neon trails.
+- Remove Ads: Premium one-time purchase.
+
+================================================================================
+END OF DOCUMENT
+================================================================================
